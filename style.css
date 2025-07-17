@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+:root {
+  --text-color: #222;
+  --primary-color: #e9eef6;
+  --user-bubble: #cce5ff;
+  --bot-bubble: #f1f1f1;
+}
+
+body {
+  background: var(--primary-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ✅ Welcome header */
+.header .title {
+  max-width: 600px;
+  text-align: center;
+  font-weight: 200;
+  font-size: 42px;
+  color: var(--text-color);
+  margin: 1rem auto;
+}
+
+body.dark-mode .header .title {
+  color: #fff;
+}
+
+.gemini {
+  background: linear-gradient(to right, #4285f4, #d96570);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ✅ Chat area full height */
+.chat-area {
+  flex: 1;
+  padding: 1rem 10%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ✅ Chat bubbles */
+.chat {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  line-height: 1.4;
+  font-size: 15px;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.chat.user {
+  background: var(--user-bubble);
+  margin-left: auto;
+}
+
+.chat.bot {
+  background: var(--bot-bubble);
+  margin-right: auto;
+}
+
+/* ✅ Typing dots animation */
+.typing-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  background: #999;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1s infinite alternate;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0% { transform: translateY(0); opacity: 0.3; }
+  100% { transform: translateY(-4px); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ✅ Suggestion Chips */
+.suggestion-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.chip {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.chip:hover {
+  background: #f2f2f2;
+}
+
+/* ✅ Typing area */
+.typing-area {
+  padding: 15px;
+}
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 25px;
+  gap: 0.5rem;
+  width: 90%;
+  margin: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: none;
+}
+.input-wrapper input {
+  flex: 1;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  padding: 0 15px;
+  font-size: 16px;
+  color: var(--text-color);
+  background: transparent;
+}
+.input-wrapper input:focus {
+  outline: none;
+  box-shadow: none;
+}
+#send-message-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+#send-message-button:hover {
+  background: #f0f0f0;
+}
+
+/* ✅ Sidebar styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 250px;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar h2 { font-size: 22px; margin-bottom: 15px; }
+.sidebar h3 { margin-top: 20px; font-size: 16px; color: #777; }
+.sidebar-btn {
+  padding: 10px;
+  background: #4285f4;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.sidebar ul { list-style: none; margin-top: 10px; }
+.sidebar ul li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+.sidebar.open { left: 0; }
+
+/* ✅ Hamburger menu */
+#menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  font-size: 26px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #666;
+  z-index: 300;
+  transition: opacity 0.3s ease;
+}
+/* ✅ Dark Mode */
+body.dark-mode { background: #1e1e1e; color: #eee; }
+body.dark-mode .chat.bot { background: #333; }
+body.dark-mode .chat.user { background: #0056b3; color: #fff; }
+body.dark-mode .sidebar { background: #222; color: #eee; }
+body.dark-mode .chip { background: #333; color: #fff; }
+body.dark-mode .input-wrapper { background: #333; box-shadow: none; }
+body.dark-mode .input-wrapper input { color: #fff; }
+/* ✅ Dark Mode Toggle Button */
+#theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #666;
+  z-index: 300;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gemini Chat</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body>
+  <!-- ✅ Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>Menu</h2>
+    <button class="sidebar-btn" id="new-chat">➕ New Chat</button>
+    <h3>Recent Chats</h3>
+    <ul id="recent-chats">
+      <li>Chat 1</li>
+      <li>Chat 2</li>
+    </ul>
+  </div>
+
+  <!-- ✅ Hamburger Menu -->
+  <button id="menu-toggle">☰</button>
+  <!-- ✅ Dark mode toggle -->
+  <button id="theme-toggle">🌙</button>
+
+  <!-- ✅ Header (hides after first message) -->
+  <header class="header" id="welcome-header">
+    <h1 class="title">
+      Meet <span class="gemini">Gemini</span>, your personal AI assistant
+    </h1>
+  </header>
+
+  <!-- ✅ Chat area -->
+  <div class="chat-area" id="chatArea"></div>
+
+  <!-- ✅ Suggestion Chips -->
+  <div class="suggestion-chips" id="suggestions">
+    <div class="chip">Tell me a joke</div>
+    <div class="chip">Give me a coding tip</div>
+    <div class="chip">Summarize a news article</div>
+    <div class="chip">Explain AI in simple terms</div>
+  </div>
+
+  <!-- ✅ Typing box -->
+  <div class="typing-area">
+    <div class="input-wrapper">
+      <input type="text" placeholder="Type your message..." class="typing-input" />
+      <button id="send-message-button">
+        <span class="material-symbols-outlined">send</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
